@@ -7,9 +7,40 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(./images/apple-g97683b5a8_1280.jpg);
+  background-repeat: no-repeat;
+    background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input {
+  outline: none;
+}
+
+button:hover {
+  box-shadow: 2px 3px 5px rgb(11, 102, 187);
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
 }
