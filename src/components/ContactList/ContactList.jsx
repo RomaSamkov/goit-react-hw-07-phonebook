@@ -1,26 +1,33 @@
 import ContactItem from 'components/ContactItem';
 import Notification from 'components/Notification';
-import { useSelector } from 'react-redux';
 import { AllContacts, ListContacts } from './ContactList.styled';
-
-const getFilteredContacts = (items, filter) =>
-  items.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+import { useSelector } from 'react-redux';
+import { useGetContactsQuery } from 'redux/contactsApi';
 
 const ContactList = () => {
-  const items = useSelector(state => state.contacts.items);
-  const filter = useSelector(state => state.contacts.filter);
-  const contacts = getFilteredContacts(items, filter);
+  const { data, isLoading } = useGetContactsQuery();
+  const filter = useSelector(state => state.filter.value);
+
+  const getfilteredContacts = () =>
+    data &&
+    data.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+  const contacts = getfilteredContacts();
 
   return (
     <ListContacts>
-      {contacts.length > 0 && (
-        <AllContacts>All Contacts : {contacts.length}</AllContacts>
-      )}
-      {contacts.length > 0 ? (
-        contacts.map(({ id, name, number }) => (
-          <ContactItem key={id} id={id} name={name} number={number} />
+      {contacts && <AllContacts>All Contacts : {contacts.length}</AllContacts>}
+      {!isLoading && data && contacts.length > 0 ? (
+        contacts.map(({ id, name, phone }) => (
+          <ContactItem
+            key={id}
+            id={id}
+            data={contacts}
+            name={name}
+            phone={phone}
+          />
         ))
       ) : (
         <Notification message="No contacts" />

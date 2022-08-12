@@ -1,17 +1,19 @@
-import { deleteContact } from 'redux/contactsSlice';
 import { Item, Contact, Button } from './ContactItem.styled';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDeleteContactMutation } from 'redux/contactsApi';
 
-const ContactItem = ({ id, name, number }) => {
-  const dispatch = useDispatch();
-  const onDeleteContact = id => dispatch(deleteContact(id));
+const ContactItem = ({ id, name, phone }) => {
+  const [deleteContact] = useDeleteContactMutation();
+
+  const handleDeleteContact = async id => {
+    await deleteContact(id).unwrap();
+  };
   return (
     <Item key={id}>
       <Contact>
-        {name}........ {number}
+        {name}........ {phone}
       </Contact>
-      <Button type="submit" onClick={() => onDeleteContact(id)}>
+      <Button type="submit" onClick={() => handleDeleteContact(id)}>
         Delete
       </Button>
     </Item>
@@ -21,7 +23,7 @@ const ContactItem = ({ id, name, number }) => {
 ContactItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
 };
 
 export default ContactItem;

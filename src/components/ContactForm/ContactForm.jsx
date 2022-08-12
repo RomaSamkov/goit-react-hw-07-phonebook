@@ -6,55 +6,46 @@ import {
   InputNumber,
   Label,
 } from './ContactForm.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
-import { addContact } from 'redux/contactsSlice';
+import { useAddContactMutation, useGetContactsQuery } from 'redux/contactsApi';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-  const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.items);
+  const [phone, setPhone] = useState('');
+  const [addContact] = useAddContactMutation();
+  const { data } = useGetContactsQuery();
 
   const handleChange = event => {
     const prop = event.currentTarget.name;
-
     switch (prop) {
       case 'name':
         setName(event.currentTarget.value);
         break;
-      case 'number':
-        setNumber(event.currentTarget.value);
+      case 'phone':
+        setPhone(event.currentTarget.value);
         break;
-
       default:
         break;
     }
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const data = {
-      id: nanoid(),
-      name: name,
-      number: number,
-    };
+  const handleAddContact = async event => {
+    event.preventDefault();
     if (
-      contacts.find(
-        contact => contact.name.toLowerCase() === data.name.toLocaleLowerCase()
-      )
+      data.find(contact => contact.name.toLowerCase() === name.toLowerCase())
     ) {
       setName('');
-      setNumber('');
-      return alert(`This contact: ${data.name} is already in phonebook`);
+      setPhone('');
+      return alert(`This contact: ${name} is already in phonebook`);
     }
-    dispatch(addContact(data));
-    setName('');
-    setNumber('');
+    if (name && phone) {
+      await addContact({ name: name, phone: phone }).unwrap();
+      setName('');
+      setPhone('');
+    }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleAddContact}>
       <Label>
         Name
         <InputName
@@ -72,8 +63,8 @@ const ContactForm = () => {
         Number
         <InputNumber
           type="tel"
-          name="number"
-          value={number}
+          name="phone"
+          value={phone}
           onChange={handleChange}
           placeholder="Enter Number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
