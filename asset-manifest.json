@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/goit-react-hw-07-phonebook/static/css/main.ec958e04.css",
-    "main.js": "/goit-react-hw-07-phonebook/static/js/main.3f31262f.js",
+    "main.js": "/goit-react-hw-07-phonebook/static/js/main.5a7c13d8.js",
     "static/media/apple-g97683b5a8_1280.jpg": "/goit-react-hw-07-phonebook/static/media/apple-g97683b5a8_1280.edc88baf93344aa40f06.jpg",
     "index.html": "/goit-react-hw-07-phonebook/index.html",
     "main.ec958e04.css.map": "/goit-react-hw-07-phonebook/static/css/main.ec958e04.css.map",
-    "main.3f31262f.js.map": "/goit-react-hw-07-phonebook/static/js/main.3f31262f.js.map"
+    "main.5a7c13d8.js.map": "/goit-react-hw-07-phonebook/static/js/main.5a7c13d8.js.map"
   },
   "entrypoints": [
     "static/css/main.ec958e04.css",
-    "static/js/main.3f31262f.js"
+    "static/js/main.5a7c13d8.js"
   ]
 }
