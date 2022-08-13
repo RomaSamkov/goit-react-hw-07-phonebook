@@ -14,11 +14,21 @@ const App = () => {
       <ContactList />
       <Toaster
         toastOptions={{
-          style: {
-            fontWeight: 500,
-            padding: '16px',
-            color: '#fff',
-            background: 'red',
+          error: {
+            style: {
+              fontWeight: 500,
+              padding: '16px',
+              color: '#fff',
+              background: 'red',
+            },
+          },
+          success: {
+            style: {
+              fontWeight: 500,
+              padding: '16px',
+              color: '#fff',
+              background: '#5446cc',
+            },
           },
         }}
       />

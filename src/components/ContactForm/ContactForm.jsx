@@ -36,7 +36,7 @@ const ContactForm = () => {
     ) {
       setName('');
       setPhone('');
-      return toast(`This contact: '${name}' is already in phonebook`, {
+      return toast.error(`This contact: '${name}' is already in phonebook`, {
         duration: 2000,
         position: 'top-center',
         icon: '👏',
@@ -44,6 +44,10 @@ const ContactForm = () => {
     }
     if (name && phone) {
       await addContact({ name: name, phone: phone }).unwrap();
+      toast.success('Contact is added successfully!', {
+        duration: 2000,
+        position: 'top-center',
+      });
       setName('');
       setPhone('');
     }
