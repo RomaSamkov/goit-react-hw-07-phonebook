@@ -1,8 +1,13 @@
 import ContactItem from 'components/ContactItem';
 import Notification from 'components/Notification';
-import { AllContacts, ListContacts } from './ContactList.styled';
+import {
+  AllContacts,
+  ListContacts,
+  LoaderContainer,
+} from './ContactList.styled';
 import { useSelector } from 'react-redux';
 import { useGetContactsQuery } from 'redux/contactsApi';
+import { FadeLoader } from 'react-spinners';
 
 const ContactList = () => {
   const { data, isLoading } = useGetContactsQuery();
@@ -30,7 +35,13 @@ const ContactList = () => {
           />
         ))
       ) : (
-        <Notification message="No contacts" />
+        <LoaderContainer>
+          {isLoading ? (
+            <FadeLoader color="rgba(77, 52, 220, 1)" />
+          ) : (
+            <Notification message="No contacts" />
+          )}
+        </LoaderContainer>
       )}
     </ListContacts>
   );

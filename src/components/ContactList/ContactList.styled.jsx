@@ -12,3 +12,9 @@ export const ListContacts = styled.ul`
 export const AllContacts = styled.h3`
   margin-bottom: 20px;
 `;
+
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
