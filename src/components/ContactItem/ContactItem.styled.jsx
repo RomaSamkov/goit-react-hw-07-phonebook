@@ -4,6 +4,7 @@ export const Item = styled.li`
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
+  padding-bottom: 10px;
   margin-bottom: 5px;
   border-radius: 4px;
   background-color: #fff;
