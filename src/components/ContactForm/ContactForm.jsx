@@ -7,6 +7,7 @@ import {
   Label,
 } from './ContactForm.styled';
 import { useAddContactMutation, useGetContactsQuery } from 'redux/contactsApi';
+import toast from 'react-hot-toast';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -35,7 +36,11 @@ const ContactForm = () => {
     ) {
       setName('');
       setPhone('');
-      return alert(`This contact: ${name} is already in phonebook`);
+      return toast(`This contact: '${name}' is already in phonebook`, {
+        duration: 2000,
+        position: 'top-center',
+        icon: '👏',
+      });
     }
     if (name && phone) {
       await addContact({ name: name, phone: phone }).unwrap();
