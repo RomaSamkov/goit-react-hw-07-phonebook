@@ -1,4 +1,4 @@
-import { Item, Contact, Button } from './ContactItem.styled';
+import { Item, Contact, Button, ContactSpan } from './ContactItem.styled';
 import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'redux/contactsApi';
 
@@ -11,7 +11,8 @@ const ContactItem = ({ id, name, phone }) => {
   return (
     <Item key={id}>
       <Contact>
-        {name}........ {phone}
+        <ContactSpan>{name}</ContactSpan>
+        <ContactSpan>{phone}</ContactSpan>
       </Contact>
       <Button type="submit" onClick={() => handleDeleteContact(id)}>
         Delete

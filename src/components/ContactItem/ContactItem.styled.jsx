@@ -3,17 +3,24 @@ import styled from 'styled-components';
 export const Item = styled.li`
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding-top: 10px;
   margin-bottom: 5px;
   border-radius: 4px;
   background-color: #fff;
 `;
 
-export const Contact = styled.p`
+export const Contact = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 280px;
   margin-left: 30px;
 `;
 
+export const ContactSpan = styled.span``;
+
 export const Button = styled.button`
+  margin-left: auto;
+  margin-right: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
