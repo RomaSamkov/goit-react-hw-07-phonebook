@@ -39,7 +39,6 @@ const ContactForm = () => {
       return toast.error(`This contact: '${name}' is already in phonebook`, {
         duration: 2000,
         position: 'top-center',
-        icon: '👏',
       });
     }
     if (name && phone) {
