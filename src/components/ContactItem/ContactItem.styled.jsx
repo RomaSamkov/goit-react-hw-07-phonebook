@@ -13,6 +13,7 @@ export const Item = styled.li`
 export const Contact = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 280px;
   margin-left: 30px;
 `;
